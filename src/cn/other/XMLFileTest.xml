@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons>
+	<person>
+		<name>Chen Miao</name>
+		<gender>'M'</gender>
+		<age>23</age>
+		<Tel>18706853049</Tel>
+	</person>
+	<person>
+		<name>Yang Meng</name>
+		<gender>'M'</gender>
+		<age>23</age>
+		<Tel>18706853049</Tel>
+	</person>
+</persons>
