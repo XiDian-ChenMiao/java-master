@@ -2,6 +2,7 @@ package cn.xidian.algorithm;
 
 import org.junit.Assert;
 
+import java.net.URL;
 import java.util.BitSet;
 
 /**
@@ -69,12 +70,30 @@ public class BloomFilterTest {
         return result;
     }
 
+    /**
+     * 主函数调用
+     * @param args
+     */
     public static void main(String[] args) {
-        BloomFilterTest test = new BloomFilterTest();
-        test.add("daqinzhidi");
-        test.add("chenmiao");
-        Assert.assertEquals(true, test.contains("daqinzhidi"));
-        Assert.assertEquals(true, test.contains("chenmiao"));
-        Assert.assertEquals(false, test.contains("xidian"));
+        final String[] URLS = {
+                "http://www.csdn.net/",
+                "http://www.baidu.com/",
+                "http://www.google.com.hk",
+                "http://www.cnblogs.com/",
+                "http://www.zhihu.com/",
+                "https://www.shiyanlou.com/",
+                "http://www.google.com.hk",
+                "https://www.shiyanlou.com/",
+                "http://www.csdn.net/"
+        };
+
+        BloomFilterTest filter = new BloomFilterTest();
+        for (int i = 0; i < URLS.length; i++) {
+            if (filter.contains(URLS[i])) {
+                System.out.println("contains: " + URLS[i]);
+                continue;
+            }
+            filter.add(URLS[i]);
+        }
     }
 }
