@@ -8,7 +8,12 @@ import cn.xidian.algorithm.sordoffer.common.BinaryTreeNode;
  * 创建时间：2017/7/27 19:23
  */
 public class PathSumITest {
-
+    /**
+     * 路径和判断函数
+     * @param root
+     * @param sum
+     * @return
+     */
     public boolean hasPathSum(BinaryTreeNode<Integer> root, int sum) {
         if (root == null)
             return false;
