@@ -1,8 +1,5 @@
 package cn.xidian.aio;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.AsynchronousServerSocketChannel;
@@ -14,45 +11,44 @@ import java.util.concurrent.CountDownLatch;
  * 创建时间：2017/8/16 18:16
  */
 public class AsyncTimeServerHandler implements Runnable {
-    private final static Logger logger = LoggerFactory.getLogger(AsyncTimeServerHandler.class);
+
     private int port;
-    CountDownLatch countDownLatch;
-    AsynchronousServerSocketChannel serverSocketChannel;
+
+    CountDownLatch latch;
+    AsynchronousServerSocketChannel asynchronousServerSocketChannel;
 
     public AsyncTimeServerHandler(int port) {
         this.port = port;
         try {
-            serverSocketChannel = AsynchronousServerSocketChannel.open();
-            serverSocketChannel.bind(new InetSocketAddress(port));/*绑定具体端口*/
-            logger.info("The time server is started in port " + port);
+            asynchronousServerSocketChannel = AsynchronousServerSocketChannel
+                    .open();
+            asynchronousServerSocketChannel.bind(new InetSocketAddress(port));
+            System.out.println("The time server is start in port : " + port);
         } catch (IOException e) {
-            logger.error("The time server is not started.");
+            e.printStackTrace();
         }
     }
 
-    /**
-     * When an object implementing interface <code>Runnable</code> is used
-     * to create a thread, starting the thread causes the object's
-     * <code>run</code> method to be called in that separately executing
-     * thread.
-     * <p>
-     * The general contract of the method <code>run</code> is that it may
-     * take any action whatsoever.
+    /*
+     * (non-Javadoc)
      *
-     * @see Thread#run()
+     * @see java.lang.Runnable#run()
      */
     @Override
     public void run() {
-        countDownLatch = new CountDownLatch(1);
-        accept();
+
+        latch = new CountDownLatch(1);
+        doAccept();
         try {
-            countDownLatch.await();/*作用是在完成一组正在执行的操作之前，允许当前的线程一直阻塞。现在让线程在此阻塞，防止服务端执行完成退出。*/
+            latch.await();
         } catch (InterruptedException e) {
-            logger.error("countdownlatch error");
+            e.printStackTrace();
         }
     }
 
-    private void accept() {
-        serverSocketChannel.accept(this, new AcceptCompletionHandler());
+    public void doAccept() {
+        asynchronousServerSocketChannel.accept(this,
+                new AcceptCompletionHandler());
     }
+
 }
