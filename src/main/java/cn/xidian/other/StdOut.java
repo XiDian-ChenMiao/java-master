@@ -21,7 +21,7 @@ import java.util.Locale;
  *  and put a copy in your working directory.
  *  <p>
  *  Here is an example program that uses <code>StdOut</code>:
- *  <pre>
+ *  <in>
  *   public class TestStdOut {
  *       public static void main(String[] args) {
  *           int a = 17;
@@ -31,7 +31,7 @@ import java.util.Locale;
  *           StdOut.printf("%d + %d = %d\n", a, b, sum);
  *       }
  *   }
- *  </pre>
+ *  </in>
  *  <p>
  *  <b>Differences with System.out.</b>
  *  The behavior of <code>StdOut</code> is similar to that of {@link System#out},

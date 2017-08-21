@@ -1,16 +1,13 @@
 package cn.xidian.algorithm.leetcode;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
- * 文件描述：二叉树的层序遍历
+ * 文件描述：自底向上层序遍历二叉树
  * 创建作者：陈苗
- * 创建时间：2017/8/18 20:41
+ * 创建时间：2017/8/21 10:23
  */
-public class BinaryTreeLevelOrderTraversalTest {
+public class BinaryTreeLevelOrderTraversalIITest {
     public static class TreeNode {
         int val;
         TreeNode left;
@@ -21,8 +18,9 @@ public class BinaryTreeLevelOrderTraversalTest {
         }
     }
 
-    public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<>();
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        Stack<List<Integer>> stack = new Stack<List<Integer>>();
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
         if (root == null)
             return result;
         int level = 0;
@@ -40,8 +38,10 @@ public class BinaryTreeLevelOrderTraversalTest {
                 if (node.right != null)
                     queue.add(node.right);
             }
-            result.add(temp);
+            stack.add(temp);
         }
+        while (!stack.isEmpty())
+            result.add(stack.pop());
         return result;
     }
 }

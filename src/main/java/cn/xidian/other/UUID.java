@@ -19,18 +19,18 @@ import java.security.*;
  * <p>The layout of a variant 2 (Leach-Salz) UUID is as follows:
  *
  * The most significant long consists of the following unsigned fields:
- * <pre>
+ * <in>
  * 0xFFFFFFFF00000000 time_low
  * 0x00000000FFFF0000 time_mid
  * 0x000000000000F000 version
  * 0x0000000000000FFF time_hi
- * </pre>
+ * </in>
  * The least significant long consists of the following unsigned fields:
- * <pre>
+ * <in>
  * 0xC000000000000000 variant
  * 0x3FFF000000000000 clock_seq
  * 0x0000FFFFFFFFFFFF node
- * </pre>
+ * </in>
  *
  * <p>The variant field contains a value which identifies the layout of
  * the <tt>UUID</tt>. The bit layout described above is valid only for
@@ -371,7 +371,7 @@ implements java.io.Serializable, Comparable<UUID> {
      * <code>UUID</code>.
      * 
      * <p>The UUID string representation is as described by this BNF : 
-     * <blockquote><pre>
+     * <blockquote><in>
      * {@code
      * UUID                   = <time_low> "-" <time_mid> "-"
      *                          <time_high_and_version> "-"
@@ -387,7 +387,7 @@ implements java.io.Serializable, Comparable<UUID> {
      *       "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
      *       | "a" | "b" | "c" | "d" | "e" | "f"
      *       | "A" | "B" | "C" | "D" | "E" | "F"
-     * }</pre></blockquote>
+     * }</in></blockquote>
      *
      * @return  a string representation of this <tt>UUID</tt>.
      */
