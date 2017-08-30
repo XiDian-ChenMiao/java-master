@@ -8,6 +8,7 @@ package cn.xidian.algorithm.leetcode;
 public class StringToIntegerTest {
     /**
      * 字符串转数字的调用接口
+     *
      * @param str 给定的字符串
      * @return 转化后的数字
      */
@@ -18,7 +19,7 @@ public class StringToIntegerTest {
         if ("".equals(content))
             return 0;
         char[] data = content.toCharArray();
-        int flag,start = 0,sum = 0,previous,value,posCount = 0,nagCount = 0;
+        int flag, start = 0, sum = 0, previous, value, posCount = 0, nagCount = 0;
         for (int i = 0; i < data.length; i++) {
             if (data[i] == '+' || data[i] == '-') {
                 if (data[i] == '+')
@@ -50,6 +51,7 @@ public class StringToIntegerTest {
 
     /**
      * 主程序
+     *
      * @param args
      */
     public static void main(String[] args) {
