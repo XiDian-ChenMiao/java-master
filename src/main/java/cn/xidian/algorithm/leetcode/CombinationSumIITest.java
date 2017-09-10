@@ -65,7 +65,7 @@ public class CombinationSumIITest {
      * @param args
      */
     public static void main(String[] args) {
-        int[] data = {1, 1, 2, 5, 6};
+        int[] data = {1, 1, 2, 5, 6, 6};
         List<List<Integer>> result = new CombinationSumIITest().combinationSum(data, 8);
         for (List<Integer> i : result)
             System.out.println(Arrays.toString(i.toArray()));
