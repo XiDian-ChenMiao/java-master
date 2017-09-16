@@ -18,14 +18,14 @@ public class FindMoreHalfTest {
         int result = array[0];
         int times = 1;
         for (int i = 1; i < length; i++) {
-            if (result != array[i])
-                times--;
-            else
-                times++;
-            if (times == 0)
+            if (times == 0) {
                 result = array[i];
-            else if (times > length >> 1)
-                return result;
+                times = 1;
+            }
+            else if (array[i] == result)
+                times++;
+            else
+                times--;
         }
         times = 0;
         for (int i = 0; i < length; i++) {
@@ -40,7 +40,7 @@ public class FindMoreHalfTest {
      * @param args
      */
     public static void main(String[] args) {
-        int[] array = {1,3,3,3,1};
+        int[] array = {3, 2, 3};
         System.out.println("个数超过一半的元素为：" + new FindMoreHalfTest().findMoreHalf(array,array.length));
     }
 }
