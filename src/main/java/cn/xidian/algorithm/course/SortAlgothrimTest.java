@@ -1,5 +1,6 @@
 package cn.xidian.algorithm.course;
 import java.util.Arrays;
+import java.util.Stack;
 
 import org.junit.Test;
 /**
@@ -248,6 +249,34 @@ class QuickSort implements Printer {
 		recursiveQuickSort(data,startIndex,middle - 1);
 		recursiveQuickSort(data, middle + 1, endIndex);
 	}
+
+    /**
+     * 非递归版本的快速排序
+     * @param data
+     */
+    public void quicksort(int data[]) {
+        if (data == null || data.length <= 0)
+            return;
+        Stack<Integer> stack = new Stack<Integer>();
+        int start = 0, end = data.length - 1;
+        int pivotPos;
+        stack.push(start);
+        stack.push(end);
+        while (!stack.isEmpty()) {
+            end = stack.pop();
+            start = stack.pop();
+            pivotPos = partition(data, start, end);
+            if (start < pivotPos - 1) {
+                stack.push(start);
+                stack.push(pivotPos - 1);
+            }
+            if (end > pivotPos + 1) {
+                stack.push(pivotPos + 1);
+                stack.push(end);
+            }
+        }
+    }
+
 	/**
 	 * 快速排序中的分割函数
 	 * @param data 数据源

@@ -2,6 +2,9 @@ package cn.xidian.algorithm.leetcode;
 
 import java.util.Stack;
 
+/**
+ * 二叉搜索树迭代器的实现，要求hasNext方法为O（1）的复杂度，next方法为O（h）的复杂度，其中h为二叉搜索树的树高
+ */
 public class BinarySearchTreeIteratorTest {
     private static class TreeNode {
         int val;
@@ -13,7 +16,7 @@ public class BinarySearchTreeIteratorTest {
         }
     }
     private Stack<TreeNode> stack;
-    public BSTIterator(TreeNode root) {
+    public BinarySearchTreeIteratorTest(TreeNode root) {
         stack = new Stack<>();
         TreeNode cur = root;
         while(cur != null){
