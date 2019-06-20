@@ -12,11 +12,11 @@ public class Minium2PowerTest {
 
     public final int minium2power(int num) {
         int n = num - 1;/*防止给定的数字已经为2的幂次方*/
-        n |= n >>> 1;/*保证结果n的前两位均为2*/
-        n |= n >>> 2;/*保证结果n的前两位均为4*/
-        n |= n >>> 4;/*保证结果n的前两位均为8*/
-        n |= n >>> 8;/*保证结果n的前两位均为16*/
-        n |= n >>> 16;/*保证结果n的前两位均为32*/
+        n |= n >>> 1;/*保证结果n的前2位均为1*/
+        n |= n >>> 2;/*保证结果n的前4位均为1*/
+        n |= n >>> 4;/*保证结果n的前8位均为1*/
+        n |= n >>> 8;/*保证结果n的前16位均为1*/
+        n |= n >>> 16;/*保证结果n的前32位均为1*/
         return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
     }
 
