@@ -1,5 +1,8 @@
 package cn.xidian.algorithm.leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 文件描述：
  * 创建作者：陈苗
@@ -41,6 +44,32 @@ public class TrappingRainWaterTest {
     }
 
     /**
+     * Second Method
+     * Modeling:
+     * h[i] = Math.min(highest_left[i], highest_right[i]), h[i] is the number after raining.
+     * @param height
+     * @return
+     */
+    public int trapHard(int[] height) {
+        int max = 0, sum = 0;
+        int[] leftMax = new int[height.length];/*find the highest from left side*/
+        int[] rightMax = new int[height.length];/*find the highest from right side*/
+        for (int i = 0; i < height.length; i++) {
+            max = Math.max(max, height[i]);
+            leftMax[i] = max;
+        }
+        max = 0;
+        for (int i = height.length - 1; i >= 0; i--) {
+            max = Math.max(max, height[i]);
+            rightMax[i] = max;
+        }
+        for (int i = 0; i < height.length; i++) {
+            sum += Math.min(leftMax[i], rightMax[i]) - height[i];
+        }
+        return sum;
+    }
+
+    /**
      * 主函数
      *
      * @param args
@@ -48,5 +77,6 @@ public class TrappingRainWaterTest {
     public static void main(String[] args) {
         int[] data = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
         System.out.println(new TrappingRainWaterTest().trap(data));
+        System.out.println(new TrappingRainWaterTest().trapHard(data));
     }
 }
