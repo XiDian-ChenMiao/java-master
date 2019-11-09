@@ -1,8 +1,5 @@
 package cn.xidian.algorithm.leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 文件描述：
  * 创建作者：陈苗
