@@ -7,7 +7,7 @@ package cn.xidian.algorithm.leetcode;
  * @description: LeetCode.965 单值二叉树判定
  * @date 8/14/21 10:16 PM
  */
-public class SingleValueTree {
+public class SingleValueTreeTest {
     /**
      * 判定函数
      *
